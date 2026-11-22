@@ -1,0 +1,37 @@
+ <?php 
+ 
+function get_price($name, $price) 
+{ 
+    /* JSON file INFO */ 
+    $jsonFile = "data.json"; 
+ 
+    // Read the file 
+ $json = file_get_contents($jsonFile); 
+    if ($json === false) { 
+        die("Could not read " . $jsonFile); 
+    } 
+ 
+    // Decode into an associative array 
+    $data = json_decode($json, true); 
+    if ($data === null || !isset($data["items"])) { 
+        die("Invalid JSON in " . $jsonFile); 
+    } 
+ 
+    // Look up the price for the county (same as SELECT price FROM items WHERE county = '$name') 
+    $dprice = null; 
+    foreach ($data["items"] as $row) { 
+        if ($row["county"] == $name) { 
+            $dprice = $row["price"]; 
+        } 
+    } 
+ 
+    if ($dprice == $price) 
+    { 
+        return "true"; 
+    } 
+    else 
+    { 
+        return "false"; 
+    } 
+} 
+?> 

@@ -1,0 +1,7 @@
+{ 
+  "items": [ 
+    { "county": "Orange", "price": 300000 }, 
+    { "county": "Ulster", "price": 350000 }, 
+    { "county": "Sullivan", "price": 250000 } 
+  ] 
+} 
